@@ -9,5 +9,5 @@ public interface CrudService <RQ,RS,ID> {
     RS get (ID id);
     RS update(RQ request, ID id);
     void delete(ID id);
-    Page<RS> getAll(int page, int size, SortType sort);
+    Page<RS> findAll(int page, int size, SortType sort);
 }
