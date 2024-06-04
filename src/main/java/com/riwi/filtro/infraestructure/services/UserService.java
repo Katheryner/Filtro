@@ -1,10 +1,13 @@
 package com.riwi.filtro.infraestructure.services;
 
+import org.apache.coyote.BadRequestException;
+import org.springdoc.api.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.riwi.filtro.Util.enums.SortType;
 import com.riwi.filtro.api.dto.request.UserRequest;
@@ -13,9 +16,11 @@ import com.riwi.filtro.domain.entities.User;
 import com.riwi.filtro.domain.repositories.UserRepository;
 import com.riwi.filtro.infraestructure.abstract_services.IUserService;
 
+
 import lombok.AllArgsConstructor;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class UserService implements IUserService{
     @Autowired
@@ -30,8 +35,7 @@ public class UserService implements IUserService{
 
     @Override
     public UserResp get(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+        return this.entityToResp(this.find(id));
     }
 
     @Override
@@ -84,4 +88,9 @@ public class UserService implements IUserService{
                     .build();
     }
     
+    private User find(Long id){
+
+        return this.userRepository.findById(id)
+            .orElseThrow();
+    }
 }
