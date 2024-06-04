@@ -1,7 +1,5 @@
 package com.riwi.filtro.infraestructure.services;
 
-import org.apache.coyote.BadRequestException;
-import org.springdoc.api.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -51,8 +49,8 @@ public class UserService implements IUserService{
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        
+        this.userRepository.delete(this.find(id));
     }
 
     @Override

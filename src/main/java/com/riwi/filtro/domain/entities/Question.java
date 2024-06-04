@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.util.List;
 
+import com.riwi.filtro.Util.enums.Type;
+
 
 @Entity
 @Data
@@ -17,7 +19,9 @@ public class Question {
     private Long id;
     @Lob
     private String text;
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private Type type;
+    @Column(nullable = false)
     private Boolean active;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
