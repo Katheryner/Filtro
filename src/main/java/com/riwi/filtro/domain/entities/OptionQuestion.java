@@ -3,11 +3,13 @@ package com.riwi.filtro.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class OptionQuestion {
@@ -17,7 +19,7 @@ public class OptionQuestion {
     @Lob
     @Column(nullable = false)
     private String text;
-    private boolean active;
+    private Boolean active;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id", referencedColumnName = "id")
     private Question question;

@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity(name = "user")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
@@ -20,7 +21,7 @@ public class User {
     @Column(length = 10, nullable = false)
     private String password;
     @Column(nullable = false)
-    private boolean active;
+    private Boolean active;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = false)

@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question {
@@ -17,7 +18,7 @@ public class Question {
     @Lob
     private String text;
     private String type;
-    private boolean active;
+    private Boolean active;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL,orphanRemoval = false)

@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class UserResp {
     private Long id;
     private String name;
-    private  String email;
-    
+    private String email;
+    private Boolean active;
 }
