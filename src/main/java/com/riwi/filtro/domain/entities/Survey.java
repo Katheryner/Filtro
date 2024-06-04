@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Survey {
@@ -21,7 +22,7 @@ public class Survey {
     private String description;
     @Column(nullable = false)
     private LocalDate creationDate;
-    private boolean active;
+    private Boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id", referencedColumnName = "id")
